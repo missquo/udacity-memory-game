@@ -25,6 +25,19 @@ function shuffle(array) {
     return array;
 }
 
+// Listens for card clicks
+document.querySelector('.deck').addEventListener('click', function (evt) {
+	if (evt.target.nodeName === 'LI') {
+		showCard(evt.target);
+		console.log('A span was clicked with text ' + evt.target.textContent);
+	}
+});
+
+// Displays card
+function showCard (card) {
+	card.classList.add('open', 'show');
+}
+	
 
 /*
  * set up the event listener for a card. If a card is clicked:
