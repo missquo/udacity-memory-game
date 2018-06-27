@@ -88,10 +88,14 @@ function hideCard (card) {
 	card.classList.remove('open','show','match');	
 }
 
+//List of matched cards
+let matchedCards = [];
+
 // Declare function to lock matched cards
 function matchCard(card) {
 	card.classList.remove('open', 'show');
 	card.classList.add('match');
+	matchedCards.push(card);
 }
 
 // Declare list for created cards
@@ -105,9 +109,6 @@ displayCards(shuffledCards);
 
 // Declare list of showing cards
 let showingCards = [];
-
-//List of matched cards
-let matchedCards = [];
 
 // Declare function to see if cards match
 function isMatch(card1, card2) {
@@ -163,13 +164,15 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 					matchCard(showingCards[0]);
 				} else {
 					setTimeout(function(){ hideCard(currentCard); }, 1000);
-					// setTimeout(hideCard(currentCard), 2000);
 					setTimeout(function(){ hideCard(showingCards[0]); }, 1000);
 				}
 				setTimeout(function() { showingCards = []; }, 1000);
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
+				if (matchedCards.length === 16) {
+					console.log("You win!!!!!!!!!!!");
+				}
 				
 			} else{
 				showingCards[0] = currentCard;
