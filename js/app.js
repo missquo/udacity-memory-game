@@ -88,6 +88,12 @@ function hideCard (card) {
 	card.classList.remove('open','show','match');	
 }
 
+// Declare function to lock matched cards
+function matchCard(card) {
+	card.classList.remove('open', 'show');
+	card.classList.add('match');
+}
+
 // Declare list for created cards
 const allCards = createDeck();
 
@@ -98,10 +104,10 @@ const shuffledCards = shuffle(allCards);
 displayCards(shuffledCards);
 
 // Declare list of showing cards
-const showingCards = [];
+let showingCards = [];
 
 //List of matched cards
-const matchedCards = [];
+let matchedCards = [];
 
 // Declare function to see if cards match
 function isMatch(card1, card2) {
@@ -124,12 +130,16 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 			showCard(currentCard);
 			if (showingCards.length === 1) {
 				if (isMatch(currentCard, showingCards[0])) {
-					/* matchCard */
+					matchCard(currentCard);
+					matchCard(showingCards[0]);
 				} else {
-					hideCard(currentCard);
-					hideCard(showingCards[0]);
-					showingCards = [];
+					setTimeout(function(){ hideCard(currentCard); }, 1000);
+					// setTimeout(hideCard(currentCard), 2000);
+					setTimeout(function(){ hideCard(showingCards[0]); }, 1000);
 				}
+				setTimeout(function() { showingCards = []; }, 1000);
+			} else{
+				showingCards[0] = currentCard;
 			}
 		}		
 	}
