@@ -12,7 +12,7 @@ function shuffle(array) {
     return array;
 }
 
-// Creates each card
+// Declare function to create each card
 function createCard(cardNumber) {
 	const listItem = document.createElement('li');
 	listItem.classList.add('card');
@@ -56,7 +56,7 @@ function createCard(cardNumber) {
 	return listItem;
 }
 
-// Creates list of cards
+// Declare function to create list of cards
 function createDeck() {
 	let deck = [];
 	let i = 0;
@@ -67,7 +67,7 @@ function createDeck() {
 	return deck;
 }
 
-//Displays Deck
+// Declare function to display deck
 function displayCards(displayShuffled) {
 	const board = document.querySelector('.deck');
 	let newCard;
@@ -78,24 +78,39 @@ function displayCards(displayShuffled) {
  } 
 }
 
-// Displays card
+// Declare function to display card
 function showCard (card) {
 	card.classList.add('open', 'show');
 }
 
-//Hides card
+// Declare function to hide card
 function hideCard (card) {
 	card.classList.remove('open','show','match');	
 }
 
-// Put all cards in list
+// Declare list for created cards
 const allCards = createDeck();
 
-// Put all shuffle cards in list
+// Declare list for shuffled cards
 const shuffledCards = shuffle(allCards);
 
 // Create board
 displayCards(shuffledCards);
+
+// Declare list of showing cards
+const showingCards = [];
+
+//List of matched cards
+const matchedCards = [];
+
+// Declare function to see if cards match
+function isMatch(card1, card2) {
+	const card1Classes = card1.firstElementChild.classList;
+	const card2Classes = card2.firstElementChild.classList;
+	const match = card2Classes.contains(card1Classes[1]);
+	return match;
+}
+
 
 let clicks = 0;
 
@@ -107,6 +122,15 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 			return false;
 		} else {
 			showCard(currentCard);
+			if (showingCards.length === 1) {
+				if (isMatch(currentCard, showingCards[0])) {
+					/* matchCard */
+				} else {
+					hideCard(currentCard);
+					hideCard(showingCards[0]);
+					showingCards = [];
+				}
+			}
 		}		
 	}
 });
