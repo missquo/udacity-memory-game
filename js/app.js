@@ -117,10 +117,34 @@ function isMatch(card1, card2) {
 	return match;
 }
 
-// Declare function to updates moves
+// Declare function to update moves
 function showMoves(num) {
 	let displayMoves = document.querySelector('.moves');
 	displayMoves.textContent =num;
+}
+
+// Declare function to update star rating
+function starRating(num) {
+	let three = document.querySelector('.threestar');
+	let two = document.querySelector('.twostar');
+	switch (num) {
+	 case 15:
+		three.classList.remove('fa-star');
+		three.classList.add('fa-star-half-o');
+		break; 
+	 case 20:
+		three.classList.remove('fa-star-half-o');
+		three.classList.add('fa-star-o');
+		break;
+	 case 25:
+		two.classList.remove('fa-star');
+		two.classList.add('fa-star-half-o');
+		break; 
+	 case 30:
+		two.classList.remove('fa-star-half-o');
+		two.classList.add('fa-star-o');
+		break;
+	 }	 
 }
 
 let moves = 0;
@@ -145,6 +169,7 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 				setTimeout(function() { showingCards = []; }, 1000);
 				moves ++;
 				showMoves(moves);
+				starRating(moves);
 				
 			} else{
 				showingCards[0] = currentCard;
