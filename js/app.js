@@ -117,8 +117,13 @@ function isMatch(card1, card2) {
 	return match;
 }
 
+// Declare function to updates moves
+function showMoves(num) {
+	let displayMoves = document.querySelector('.moves');
+	displayMoves.textContent =num;
+}
 
-let clicks = 0;
+let moves = 0;
 
 // Listens for card clicks
 document.querySelector('.deck').addEventListener('click', function (evt) {
@@ -138,6 +143,9 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 					setTimeout(function(){ hideCard(showingCards[0]); }, 1000);
 				}
 				setTimeout(function() { showingCards = []; }, 1000);
+				moves ++;
+				showMoves(moves);
+				
 			} else{
 				showingCards[0] = currentCard;
 			}
