@@ -75,6 +75,7 @@ function displayCards(displayShuffled) {
 	for (let i = 0; i < displayShuffled.length; i++) {
 		newCard = displayShuffled[i];
 		board.appendChild(newCard);
+		// hideCard(displayShuffled[i]);
  } 
 }
 
@@ -88,8 +89,7 @@ function hideCard (card) {
 	card.classList.remove('open','show','match');	
 }
 
-//List of matched cards
-let matchedCards = [];
+
 
 // Declare function to lock matched cards
 function matchCard(card) {
@@ -97,18 +97,6 @@ function matchCard(card) {
 	card.classList.add('match');
 	matchedCards.push(card);
 }
-
-// Declare list for created cards
-const allCards = createDeck();
-
-// Declare list for shuffled cards
-const shuffledCards = shuffle(allCards);
-
-// Create board
-displayCards(shuffledCards);
-
-// Declare list of showing cards
-let showingCards = [];
 
 // Declare function to see if cards match
 function isMatch(card1, card2) {
@@ -148,7 +136,35 @@ function starRating(num) {
 	 }	 
 }
 
+// Declare function to reset game
+function resetGame() {
+	moves = 0;
+	showMoves(moves);
+	starRating(moves);
+	allCards = createDeck();
+	shuffledCards = shuffle(allCards);
+	displayCards(shuffledCards);
+	showingCards = [];
+	matchedCards = [];
+}
+
+// Declare list for created cards
+let allCards = createDeck();
+
+// Declare list for shuffled cards
+let shuffledCards = shuffle(allCards);
+
+// Declare variable to hold number of moves
 let moves = 0;
+
+// Declare list of showing cards
+let showingCards = [];
+
+//List of matched cards
+let matchedCards = [];
+
+// Create board
+displayCards(shuffledCards);
 
 // Listens for card clicks
 document.querySelector('.deck').addEventListener('click', function (evt) {
@@ -179,6 +195,15 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 			}
 		}		
 	}
+});
+
+// Listens for game restart click
+document.querySelector('.restart').addEventListener('click', function() {
+	const board = document.querySelector('.deck');
+	board.innerHTML = '';
+	resetGame();
+	// setTimeout(function(){ displayCards(shuffledCards); }, 1000);
+		
 });
 
 /*
