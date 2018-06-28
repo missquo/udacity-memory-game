@@ -40,6 +40,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
+    /* background: radial-gradient(circle, blue, black 5%, blue); */
     background: linear-gradient(120deg, #8233ba 0%, #fa06cd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -63,10 +64,12 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: transform 0.8s ease;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotate(15deg);
+    transition: transform 0.8s ease;
     background: #d6cf06;
     cursor: default;
 }
@@ -86,10 +89,14 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
+    text-align: center;
     width: 345px;
     margin-bottom: 10px;
     color: purple;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .score-panel .stars {
@@ -104,7 +111,11 @@ h1 {
     display: inline-block;
 }
 
+.score-panel #timer {
+	width: 100px;
+	text-align: left;
+}
+
 .score-panel .restart {
-    float: right;
     cursor: pointer;
 }
