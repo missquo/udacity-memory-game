@@ -176,17 +176,19 @@ function resetGame() {
 function winGame() {
 	stopTimer();
 	let gameTime = document.querySelector('.timer').innerText;
-	/* gameTime = gameTime.toString;
-	console.log (gameTime);
-	if (gameTIme[0] = '0') {
-		gameTime = gameTime.slice(1);
-	} */
-	board.innerHTML = "<li class='win'> <h1>Congratulations!  You win!</h1></li>";
+	board.innerHTML = "<li class='win' 'restart'> <h1>Congratulations!  You win!</h1></li>";
 	board.style.justifyContent = 'center';
 	const winningStats = document.createElement('span');
 	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
 	let winMessage = document.querySelector('.win');
 	winMessage.appendChild(winningStats);
+	const button = document.createElement('span');
+	button.textContent = "Play again?";
+	button.classList.add('button');
+	winMessage.appendChild(button);
+	document.querySelector('.button').addEventListener('click', function() {
+		resetGame();
+	});
 }
 
 // Declare variable for board
@@ -235,9 +237,8 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
-				if (matchedCards.length === 2) {
+				if (matchedCards.length === 0) {
 					setTimeout(function() { winGame(); }, 1000);
-					console.log("You win!!!!!!!!!!!");
 				}
 			} else {
 				showingCards[0] = currentCard;
@@ -249,11 +250,11 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 	}
 });
 
-
 // Listens for game restart click
 document.querySelector('.restart').addEventListener('click', function() {
 	resetGame();
 });
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
