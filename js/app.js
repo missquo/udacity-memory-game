@@ -69,7 +69,6 @@ function createDeck() {
 
 // Declare function to display deck
 function displayCards(displayShuffled) {
-	const board = document.querySelector('.deck');
 	let newCard;
 	board.innerHTML = '';
 	for (let i = 0; i < displayShuffled.length; i++) {
@@ -114,24 +113,30 @@ function showMoves(num) {
 function starRating(num) {
 	let three = document.querySelector('.threestar');
 	let two = document.querySelector('.twostar');
+	let starmessage = 'three stars'
 	switch (num) {
 	 case 15:
 		three.classList.remove('fa-star');
 		three.classList.add('fa-star-half-o');
+		starmessage = 'two and a half stars'
 		break; 
 	 case 20:
 		three.classList.remove('fa-star-half-o');
 		three.classList.add('fa-star-o');
+		starmessage = 'two stars'
 		break;
 	 case 25:
 		two.classList.remove('fa-star');
 		two.classList.add('fa-star-half-o');
+		starmessage = 'oe and a half stars'
 		break; 
 	 case 30:
 		two.classList.remove('fa-star-half-o');
 		two.classList.add('fa-star-o');
+		starmessage = 'one star'
 		break;
 	 }	 
+	 return starmessage;
 }
 
 // Declare function to start timer
@@ -153,6 +158,8 @@ function stopTimer() {
 
 // Declare function to reset game
 function resetGame() {
+	board.style.background = 'linear-gradient(120deg, #8233ba 0%, #fa06cd 100%)';
+	document.querySelector('.timer').innerHTML = "00:00";
 	moves = 0;
 	start = 0;
 	stopTimer();
@@ -167,10 +174,22 @@ function resetGame() {
 
 function winGame() {
 	stopTimer();
-	const board = document.querySelector('.deck');
+	let gameTime = document.querySelector('.timer').innerText;
+	/* gameTime = gameTime.toString;
+	console.log (gameTime);
+	if (gameTIme[0] = '0') {
+		gameTime = gameTime.slice(1);
+	} */
 	board.innerHTML = '';
-	board.style.background = 'radial-gradient(circle, blue, black 5%, blue)';
+	const winning = document.createElement('span');
+	winning.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
+	winMessage.appendChild(winning);
+	winMessage.classList.remove('winhide');
+	winMessage.classList.add('winshow');
 }
+
+// Declare variable for board
+const board = document.querySelector('.deck');
 
 // Declare list for created cards
 let allCards = createDeck();
@@ -191,6 +210,9 @@ let matchedCards = [];
 let start = 0;
 let interval;
 
+//Declare variable for win message
+let winMessage = document.querySelector('.win');
+
 // Create board
 displayCards(shuffledCards);
 
@@ -207,15 +229,16 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 					matchCard(currentCard);
 					matchCard(showingCards[0]);
 				} else {
-					setTimeout(function(){ hideCard(currentCard); }, 1000);
-					setTimeout(function(){ hideCard(showingCards[0]); }, 1000);
+					setTimeout(function(){ 
+						hideCard(currentCard);  
+						hideCard(showingCards[0]);}, 1000);
 				}
 				setTimeout(function() { showingCards = []; }, 1000);
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
-				if (matchedCards.length === 16) {
-					winGame();
+				if (matchedCards.length === 2) {
+					setTimeout(function() { winGame(); }, 1000);
 					console.log("You win!!!!!!!!!!!");
 				}
 				
@@ -225,12 +248,12 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 					interval = setInterval(startTimer, 1000);
 				}
 			} else {
-				return false;
+				evt.preventDefault();
 			}
-			
 		}		
 	}
 });
+
 
 // Listens for game restart click
 document.querySelector('.restart').addEventListener('click', function() {

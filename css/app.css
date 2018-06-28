@@ -119,3 +119,23 @@ h1 {
 .score-panel .restart {
     cursor: pointer;
 }
+
+.win {
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.win .winhide {
+	height: 0px;
+	width: 0px;
+}
+
+.winshow {
+	position: absolute;	
+	/* background: radial-gradient(circle, blue, black 5%, blue); */
+	height: 400px;
+	width:  400px;
+	font-size: 1.5em;
+}
