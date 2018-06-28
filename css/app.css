@@ -33,6 +33,11 @@ h1 {
     font-weight: 300;
 }
 
+.title {
+	color: purple;
+	font-size: 3em;
+}
+
 /*
  * Styles for the deck of cards
  */
@@ -55,7 +60,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: black;
+    background: #0f1928;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -121,21 +126,12 @@ h1 {
 }
 
 .win {
-	font-size: 0;
 	color: #ffffff;
-	border-radius: 8px;
 	text-align: center;
-}
-
-.win .winhide {
-	height: 0px;
-	width: 0px;
-}
-
-.winshow {
-	position: absolute;	
-	/* background: radial-gradient(circle, blue, black 5%, blue); */
 	height: 400px;
 	width:  400px;
 	font-size: 1.5em;
+	display: flex:
+	align-items: center;
+	list-style: none;
 }

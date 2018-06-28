@@ -160,6 +160,7 @@ function stopTimer() {
 function resetGame() {
 	board.style.background = 'linear-gradient(120deg, #8233ba 0%, #fa06cd 100%)';
 	document.querySelector('.timer').innerHTML = "00:00";
+	board.style.justifyContent = 'space-between';
 	moves = 0;
 	start = 0;
 	stopTimer();
@@ -180,12 +181,12 @@ function winGame() {
 	if (gameTIme[0] = '0') {
 		gameTime = gameTime.slice(1);
 	} */
-	board.innerHTML = '';
-	const winning = document.createElement('span');
-	winning.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
-	winMessage.appendChild(winning);
-	winMessage.classList.remove('winhide');
-	winMessage.classList.add('winshow');
+	board.innerHTML = "<li class='win'> <h1>Congratulations!  You win!</h1></li>";
+	board.style.justifyContent = 'center';
+	const winningStats = document.createElement('span');
+	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
+	let winMessage = document.querySelector('.win');
+	winMessage.appendChild(winningStats);
 }
 
 // Declare variable for board
@@ -209,9 +210,6 @@ let matchedCards = [];
 // Declare timer interval and start time
 let start = 0;
 let interval;
-
-//Declare variable for win message
-let winMessage = document.querySelector('.win');
 
 // Create board
 displayCards(shuffledCards);
@@ -241,14 +239,11 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 					setTimeout(function() { winGame(); }, 1000);
 					console.log("You win!!!!!!!!!!!");
 				}
-				
-			} else if (showingCards.length === 0) {
+			} else {
 				showingCards[0] = currentCard;
 				if (moves === 0) {
 					interval = setInterval(startTimer, 1000);
 				}
-			} else {
-				evt.preventDefault();
 			}
 		}		
 	}
