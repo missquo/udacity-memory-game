@@ -136,6 +136,7 @@ function starRating(num) {
 		two.classList.add('fa-star');
 		starmessage = 'three stars';
 	} 	
+	//Returns final number of stars to  winGame function
 	return starmessage;
 }
 
@@ -172,12 +173,14 @@ function resetGame() {
 	matchedCards = [];
 }
 
+// Declare function to display winning message
 function winGame() {
 	stopTimer();
 	let gameTime = document.querySelector('.timer').innerText;
 	board.innerHTML = "<li class='win'><h1>Congratulations!</h1><h1>You win!</h1></li>";
 	board.style.justifyContent = 'center';
 	const winningStats = document.createElement('span');
+	//Collects winning data and creates message
 	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
 	let winMessage = document.querySelector('.win');
 	const button = document.createElement('span');
@@ -186,6 +189,7 @@ function winGame() {
 	const fragment = document.createDocumentFragment()
 	fragment.appendChild(winningStats);
 	fragment.appendChild(button);
+	//Adds fragment containing message to DOM
 	winMessage.appendChild(fragment);
 	document.querySelector('.button').addEventListener('click', function() {
 		resetGame();
@@ -221,11 +225,14 @@ displayCards(shuffledCards);
 document.querySelector('.deck').addEventListener('click', function (evt) {
 	if (evt.target.nodeName === 'LI') {
 		let currentCard = evt.target;
+		//Checks to see if card is already displayed
 		if (currentCard.classList.contains('match') || currentCard.classList.contains('show')) {
 			return false;
 		} else {
 			showCard(currentCard);
+			//Checks to see if two cards are now visible
 			if (showingCards.length === 1) {
+				// Checks to see if both cards match
 				if (isMatch(currentCard, showingCards[0])) {
 					matchCard(currentCard);
 					matchCard(showingCards[0]);
@@ -238,11 +245,13 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
+				//Checks to see if all cards have been matched
 				if (matchedCards.length === 16) {
 					setTimeout(function() { winGame(); }, 1000);
 				}
 			} else {
 				showingCards[0] = currentCard;
+				//Starts timer on first card click
 				if (moves === 0) {
 					interval = setInterval(startTimer, 1000);
 				}
