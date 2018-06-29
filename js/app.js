@@ -1,7 +1,6 @@
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -17,9 +16,9 @@ function createCard(cardNumber) {
 	const listItem = document.createElement('li');
 	listItem.classList.add('card');
 
-	 switch (cardNumber) {
-	 case 0:
-	 case 1:
+	switch (cardNumber) {
+	case 0:
+	case 1:
 		iconClass = 'fa-diamond';
 		break;
 	case 2:
@@ -113,30 +112,31 @@ function showMoves(num) {
 function starRating(num) {
 	let three = document.querySelector('.threestar');
 	let two = document.querySelector('.twostar');
-	let starmessage = 'three stars'
-	switch (num) {
-	 case 15:
-		three.classList.remove('fa-star');
-		three.classList.add('fa-star-half-o');
-		starmessage = 'two and a half stars'
-		break; 
-	 case 20:
-		three.classList.remove('fa-star-half-o');
-		three.classList.add('fa-star-o');
-		starmessage = 'two stars'
-		break;
-	 case 25:
-		two.classList.remove('fa-star');
-		two.classList.add('fa-star-half-o');
-		starmessage = 'oe and a half stars'
-		break; 
-	 case 30:
+	let starmessage;
+	if (num > 29) {
 		two.classList.remove('fa-star-half-o');
 		two.classList.add('fa-star-o');
-		starmessage = 'one star'
-		break;
-	 }	 
-	 return starmessage;
+		starmessage = 'one star';
+	} else if (num > 24) {
+		two.classList.remove('fa-star');
+		two.classList.add('fa-star-half-o');
+		starmessage = 'one and a half stars';
+	} else if (num > 19) {
+		three.classList.remove('fa-star-half-o');
+		three.classList.add('fa-star-o'); 
+		starmessage = 'two stars';
+	} else if (num > 14) {
+		three.classList.remove('fa-star');
+		three.classList.add('fa-star-half-o');
+		starmessage = 'two and a half stars';
+	} else {
+		three.classList.remove('fa-star-half-o', 'fa-star-o');
+		three.classList.add('fa-star');
+		two.classList.remove('fa-star-half-o', 'fa-star-o');
+		two.classList.add('fa-star');
+		starmessage = 'three stars';
+	} 
+	return starmessage;
 }
 
 // Declare function to start timer
@@ -158,7 +158,6 @@ function stopTimer() {
 
 // Declare function to reset game
 function resetGame() {
-	board.style.background = 'linear-gradient(120deg, #8233ba 0%, #fa06cd 100%)';
 	document.querySelector('.timer').innerHTML = "00:00";
 	board.style.justifyContent = 'space-between';
 	moves = 0;
@@ -181,11 +180,14 @@ function winGame() {
 	const winningStats = document.createElement('span');
 	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
 	let winMessage = document.querySelector('.win');
-	winMessage.appendChild(winningStats);
+	// winMessage.appendChild(winningStats);
 	const button = document.createElement('span');
 	button.textContent = "Play again?";
 	button.classList.add('button');
-	winMessage.appendChild(button);
+	const fragment = document.createDocumentFragment()
+	fragment.appendChild(winningStats);
+	fragment.appendChild(button);
+	winMessage.appendChild(fragment);
 	document.querySelector('.button').addEventListener('click', function() {
 		resetGame();
 	});
@@ -231,9 +233,9 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 				} else {
 					setTimeout(function(){ 
 						hideCard(currentCard);  
-						hideCard(showingCards[0]);}, 1000);
+						hideCard(showingCards[0]);}, 700);
 				}
-				setTimeout(function() { showingCards = []; }, 1000);
+				setTimeout(function() { showingCards = []; }, 700);
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
