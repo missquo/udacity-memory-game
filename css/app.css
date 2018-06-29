@@ -26,11 +26,12 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-width: 370px;
 }
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 900;
 }
 
 .title {
@@ -45,7 +46,7 @@ h1 {
 .deck {
     width: 100vmin;
     height: 100vmin;
-    min-height: 680px;
+    min-height: 320px;
     background: linear-gradient(120deg, #8233ba 0%, #fa06cd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -95,43 +96,66 @@ h1 {
  */
 
 .score-panel {
-    text-align: center;
-    width: 345px;
+    width: 100vmin;
+    font-size: 2em;
+    font-weight: 1000;
     margin-bottom: 10px;
     color: purple;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.score-panel .stars {
+.scoresection {
+	display: flex;
+	flex-shrink:0;
+}
+
+.stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.stars li {
     list-style: none;
     display: inline-block;
 }
 
-.score-panel #timer {
-	width: 100px;
+#timer {
 	text-align: left;
 }
 
-.score-panel .restart {
+
+	 .one {
+		 width: 25%;
+	 }
+	 
+	 .three {
+		 width: 35%;
+	 }
+	 
+	 .two {
+		 width: 25%;
+	 }
+
+	.four {
+		width: 10%;
+		text-align: right;
+	}
+
+.restart {
     cursor: pointer;
 }
 
 .win {
 	color: #ffffff;
 	text-align: center;
-	height: 400px;
-	width:  400px;
-	font-size: 1.5em;
+	height: 90%;
+	width:  90%;
+	font-size: 1.3em;
 	display: flex:
 	align-items: center;
 	list-style: none;
@@ -145,4 +169,54 @@ h1 {
 	background: #0f1928;
 	cursor: pointer;
 	width:150px;
+}
+
+ @media screen and (max-width: 650px) {
+	 .score-panel {
+		 font-size:3em;
+	 }
+	 
+	 .title {
+		font-size: 3.5em;
+}
+	 
+	 
+	 .one {
+		 order: 1;
+		 width: 35%;
+	 }
+	 
+	 .three {
+		 order: 2;
+		 width: 50%;
+		 display: flex;
+		 align-items: right;
+	 }
+	 
+	 .two {
+		 order: 3;
+		 width: 90%;
+		 text-align: right;
+	 }
+
+	.four {
+		order: 4;
+		width: 10%;
+		text-align: right;
+	}
+
+ }
+ 
+  @media screen and (max-width: 450px) {
+	  	 .score-panel {
+		 font-size:2.3em;
+	 }
+	 
+
+.win { 
+	font-size: .8em;
+}
+	
+	  	 .title {
+		font-size: 3em;
 }

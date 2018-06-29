@@ -176,7 +176,7 @@ function resetGame() {
 function winGame() {
 	stopTimer();
 	let gameTime = document.querySelector('.timer').innerText;
-	board.innerHTML = "<li class='win' 'restart'> <h1>Congratulations!  You win!</h1></li>";
+	board.innerHTML = "<li class='win'><h1>Congratulations!</h1><h1>You win!</h1></li>";
 	board.style.justifyContent = 'center';
 	const winningStats = document.createElement('span');
 	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
@@ -237,7 +237,7 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
-				if (matchedCards.length === 0) {
+				if (matchedCards.length === 16) {
 					setTimeout(function() { winGame(); }, 1000);
 				}
 			} else {

@@ -1,9 +1,10 @@
-	<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Match Game Project</title>
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
@@ -16,18 +17,19 @@
         </header>
 
         <section class="score-panel">
+		<div class="scoresection one">
         	<ul class="stars">
         		<li><i class="fa fa-star onestar"></i></li>
         		<li><i class="fa fa-star twostar"></i></li>
         		<li><i class="fa fa-star threestar"></i></li>
         	</ul>
-
-		<div id="moves"><span class="moves">0</span> Moves</div>
+		</div>
+		<div id="moves" class="scoresection two"><span class="moves">0 </span> &nbsp;Moves</div>
 		
-		<div id="timer">Timer: <span class="timer">00:00</span></div>
+		<div id="timer" class="scoresection three">Timer:  &nbsp;<span class="timer">00:00</span></div>
 
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
+            <div class="restart scoresection four">
+        		<i class="fa fa-repeat" ></i>
         	</div>
         </section>
 	  
