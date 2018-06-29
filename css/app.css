@@ -131,15 +131,15 @@ h1 {
 }
 
  .one {
-	 width: 25%;
+	width: 25%;
  }
  
  .three {
-	 width: 35%;
+	width: 35%;
  }
  
  .two {
-	 width: 25%;
+	width: 25%;
  }
 
 .four {
@@ -172,30 +172,40 @@ h1 {
 	width:150px;
 }
 
+@media screen and (min-width: 850px) {
+	.deck {
+		width: 75vmin;
+		height: 75vmin;
+	}
+	
+	.score-panel {
+		width: 85vmin;
+	}
+
 @media screen and (max-width: 650px) {
 	.score-panel {
-		 font-size:3em;
+		font-size:2.2em;
 	 }
 	 
 	.title {
-		font-size: 3.5em;
+		font-size: 3em;
 	}
 	 
 	.one {
-		 order: 1;
-		 width: 35%;
+		order: 1;
+		width: 35%;
 	 }
 	 
 	.three {
-		 order: 2;
-		 width: 50%;
-		 display: flex;
+		order: 2;
+		width: 50%;
+		display: flex;
 	 }
 	 
 	.two {
-		 order: 3;
-		 width: 90%;
-		 text-align: right;
+		order: 3;
+		width: 90%;
+		text-align: right;
 	 }
 
 	.four {
@@ -207,13 +217,18 @@ h1 {
  
  @media screen and (max-width: 450px) {
 	.score-panel {
-		 font-size:2.3em;
-	 }
+		font-size:1.7em;
+		width: 100vmin;
+	}
+
+	.container {
+		width: 100%;
+	}
 
 	.win { 
 		font-size: .8em;
 	}
-	
+
 	.title {
 		font-size: 3em;
 	}
