@@ -1,14 +1,14 @@
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
+	var currentIndex = array.length, temporaryValue, randomIndex;
+	while (currentIndex !== 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+	return array;
 }
 
 // Declare function to create each card
@@ -74,7 +74,7 @@ function displayCards(displayShuffled) {
 		newCard = displayShuffled[i];
 		board.appendChild(newCard);
 		// hideCard(displayShuffled[i]);
- } 
+	} 
 }
 
 // Declare function to display card
@@ -135,7 +135,7 @@ function starRating(num) {
 		two.classList.remove('fa-star-half-o', 'fa-star-o');
 		two.classList.add('fa-star');
 		starmessage = 'three stars';
-	} 
+	} 	
 	return starmessage;
 }
 
@@ -149,7 +149,7 @@ function startTimer() {
 	if (minutes < 10) { minzero = '0'; }
 	if (seconds < 10) { seczero = '0'; }
 	document.querySelector('.timer').innerHTML = minzero + minutes + ":" + seczero + seconds;
-	}
+}
 
 // Declare function to end timer
 function stopTimer() {
@@ -180,7 +180,6 @@ function winGame() {
 	const winningStats = document.createElement('span');
 	winningStats.textContent = "with " + moves + " moves in a time of " + gameTime + " with " + starRating(moves) + "!";
 	let winMessage = document.querySelector('.win');
-	// winMessage.appendChild(winningStats);
 	const button = document.createElement('span');
 	button.textContent = "Play again?";
 	button.classList.add('button');
@@ -256,17 +255,3 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 document.querySelector('.restart').addEventListener('click', function() {
 	resetGame();
 });
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
- 

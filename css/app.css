@@ -1,37 +1,37 @@
 html {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+	background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+	font-family: 'Coda', cursive;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-width: 370px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-width: 370px;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 900;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 900;
 }
 
 .title {
@@ -44,51 +44,53 @@ h1 {
  */
 
 .deck {
-    width: 100vmin;
-    height: 100vmin;
-    min-height: 320px;
-    background: linear-gradient(120deg, #8233ba 0%, #fa06cd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(255, 2, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+	width: 100vmin;
+	height: 100vmin;
+	min-height: 320px;
+	background: linear-gradient(120deg, #8233ba 0%, #fa06cd 100%);
+	padding: 32px;
+	border-radius: 10px;
+	box-shadow: 12px 15px 20px 0 rgba(255, 2, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 20%;
-    width: 20%;
-    margin: 2%;
-    background: #0f1928;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    transition: transform 0.8s ease;
+	height: 20%;
+	width: 20%;
+	margin: 2%;
+	background: #0f1928;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	transition: transform 0.8s ease;
 }
 
 .deck .card.open {
-    transform: rotate(15deg);
-    transition: transform 0.8s ease;
-    background: #d6cf06;
-    cursor: default;
+	transform: rotate(8deg);
+	transition: transform 0.8s ease;
+	background: #e29c31;
+	cursor: default;
 }
 
 .deck .card.show {
-    font-size: 33px;
+	font-size: 33px;
 }
 
 .deck .card.match {
-    cursor: default;
-    background: #2b9929;
-    font-size: 33px;
+	cursor: default;
+	background: #2b9929;
+	font-size: 33px;
+	transform: rotate(356deg);
+	transition: transform 0.8s ease;
 }
 
 /*
@@ -96,15 +98,15 @@ h1 {
  */
 
 .score-panel {
-    width: 100vmin;
-    font-size: 2em;
-    font-weight: 1000;
-    margin-bottom: 10px;
-    color: purple;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+	width: 100vmin;
+	font-size: 2em;
+	font-weight: 1000;
+	margin-bottom: 10px;
+	color: purple;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .scoresection {
@@ -113,41 +115,40 @@ h1 {
 }
 
 .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 0;
 }
 
 .stars li {
-    list-style: none;
-    display: inline-block;
+	list-style: none;
+	display: inline-block;
 }
 
 #timer {
 	text-align: left;
 }
 
+ .one {
+	 width: 25%;
+ }
+ 
+ .three {
+	 width: 35%;
+ }
+ 
+ .two {
+	 width: 25%;
+ }
 
-	 .one {
-		 width: 25%;
-	 }
-	 
-	 .three {
-		 width: 35%;
-	 }
-	 
-	 .two {
-		 width: 25%;
-	 }
-
-	.four {
-		width: 10%;
-		text-align: right;
-	}
+.four {
+	width: 10%;
+	text-align: right;
+}
 
 .restart {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .win {
@@ -171,28 +172,27 @@ h1 {
 	width:150px;
 }
 
- @media screen and (max-width: 650px) {
-	 .score-panel {
+@media screen and (max-width: 650px) {
+	.score-panel {
 		 font-size:3em;
 	 }
 	 
-	 .title {
+	.title {
 		font-size: 3.5em;
-}
+	}
 	 
-	 
-	 .one {
+	.one {
 		 order: 1;
 		 width: 35%;
 	 }
 	 
-	 .three {
+	.three {
 		 order: 2;
 		 width: 50%;
 		 display: flex;
 	 }
 	 
-	 .two {
+	.two {
 		 order: 3;
 		 width: 90%;
 		 text-align: right;
@@ -203,19 +203,18 @@ h1 {
 		width: 10%;
 		text-align: right;
 	}
-
  }
  
-  @media screen and (max-width: 450px) {
-	  	 .score-panel {
+ @media screen and (max-width: 450px) {
+	.score-panel {
 		 font-size:2.3em;
 	 }
-	 
 
-.win { 
-	font-size: .8em;
-}
+	.win { 
+		font-size: .8em;
+	}
 	
-	  	 .title {
+	.title {
 		font-size: 3em;
-}
+	}
+  }

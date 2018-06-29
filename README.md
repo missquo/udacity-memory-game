@@ -11,5 +11,4 @@ This is a basic card matching that tracks the player's moves and time and allots
 
 ## Try It Yourself
 
-The starting code provided by Udacity is available on their [GitHub Repository]
-(https://github.com/udacity/fend-project-memory-game).
+The starting code provided by Udacity is available on their [GitHub Repository](https://github.com/udacity/fend-project-memory-game).
