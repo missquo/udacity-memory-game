@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Try It Yourself](#try )
+* [Try It Yourself](#try-it-yourself)
 
 ## Introduction
 
