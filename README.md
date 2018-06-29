@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Try It Yourself](#contributing)
+* [Try It Yourself](#try )
 
 ## Introduction
 
