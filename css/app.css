@@ -17,7 +17,7 @@ body {
 }
 
 body {
-	background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+	background: #eee;
 	font-family: 'Coda', cursive;
 }
 
@@ -91,6 +91,10 @@ h1 {
 	font-size: 33px;
 	transform: rotate(356deg);
 	transition: transform 0.8s ease;
+}
+
+.deck .card.lock {
+	pointer-events: none;
 }
 
 /*

@@ -102,6 +102,15 @@ function isMatch(card1, card2) {
 	return match;
 }
 
+// Declare function to toggle click event availability
+function lockPointer(everyCard) {
+	let i = 0;
+	while (i < 16) {
+		everyCard[i].classList.toggle('lock');
+		i++;
+	}
+}
+
 // Declare function to update moves
 function showMoves(num) {
 	let displayMoves = document.querySelector('.moves');
@@ -232,16 +241,20 @@ document.querySelector('.deck').addEventListener('click', function (evt) {
 			showCard(currentCard);
 			//Checks to see if two cards are now visible
 			if (showingCards.length === 1) {
+				let allCards = document.querySelectorAll('.card');
+				lockPointer(allCards);
 				// Checks to see if both cards match
 				if (isMatch(currentCard, showingCards[0])) {
 					matchCard(currentCard);
 					matchCard(showingCards[0]);
 				} else {
 					setTimeout(function(){ 
-						hideCard(currentCard);  
-						hideCard(showingCards[0]);}, 700);
+						hideCard(currentCard);
+						hideCard(showingCards[0]);}, 1000);
 				}
-				setTimeout(function() { showingCards = []; }, 700);
+				setTimeout(function() { 
+					showingCards = [];
+					lockPointer(allCards);}, 1000);
 				moves ++;
 				showMoves(moves);
 				starRating(moves);
